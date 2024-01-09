@@ -1,0 +1,14 @@
+/* 전체 패딩 마진 계산 없이 width, height 원하는대로 적용하기 위해 추가 */
+* {
+    box-sizing: border-box;
+  }
+  
+
+#contains{
+    
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    /* margin-left:600px; */
+
+}

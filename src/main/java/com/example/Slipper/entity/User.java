@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,8 +15,9 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 @Getter @NoArgsConstructor
+@Setter
 public class User implements UserDetails {
     // UserDetails를 상속받아 인증 객체로 사용
 
@@ -31,14 +34,14 @@ public class User implements UserDetails {
 
     private LocalDate userBirthDate;
 
-    private Integer userPhone;
+    private String userPhone;
 
     private String userLocation;
 
     private String userNickName;
 
     @Builder
-    public User(String userId, String userPassword, String auth){
+    public User(String userId, String userPassword,String auth){
         this.userId = userId;
         this.userPassword = userPassword;
 
@@ -66,7 +69,7 @@ public class User implements UserDetails {
     // 계정 만료 여부 반환
     @Override
     public boolean isAccountNonExpired() {
-        //만료 되었는지 확인하는 로직 
+        //만료 되었는지 확인하는 로직
         return true; // true - 만료되지 않았음
     }
 

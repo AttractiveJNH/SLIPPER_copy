@@ -19,6 +19,7 @@ public class UserService {
                 .userId(dto.getUserId())
                 //패스워드 암호화
                 .userPassword(bCryptPasswordEncoder.encode(dto.getUserPassword()))
+
                 .build()).getUserId();
     }
 }

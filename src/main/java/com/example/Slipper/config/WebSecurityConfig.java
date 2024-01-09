@@ -25,8 +25,12 @@ public class WebSecurityConfig {
     @Bean
     public WebSecurityCustomizer configure(){
         return (web) -> web.ignoring()
-                .requestMatchers(toH2Console())
-                .requestMatchers("/static/**");
+//                .requestMatchers(toH2Console())
+                .requestMatchers("/static/**")
+                .requestMatchers("/css/**")
+                .requestMatchers("/images/**")
+                .requestMatchers("/js/**");
+
     }
 
     //특정 HTTP 요청에 대한 웹 기반 보안 구성
@@ -34,7 +38,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         return http
                 .authorizeHttpRequests()// 인증, 인가 설정
-                .requestMatchers("/login", "/signup", "/user").permitAll()
+                .requestMatchers("/main","/","/login", "/signup", "/user").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()// 폼 기반 로그인 설정
@@ -49,7 +53,7 @@ public class WebSecurityConfig {
                 .build();
 
     }
-    
+
     // 인증 관리자 관련 설정
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http,
@@ -64,7 +68,7 @@ public class WebSecurityConfig {
                 .and()
                 .build();
     }
-    
+
     // 패스워드 인코더로 사용할 빈 등록
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
