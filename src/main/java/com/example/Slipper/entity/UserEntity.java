@@ -1,18 +1,25 @@
-package com.example.Slipper.dto;
+package com.example.Slipper.entity;
 
-import com.example.Slipper.entity.UserEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Getter @Setter
+@Entity
+@Table(name = "user")
+@Getter @NoArgsConstructor
+@Setter
+public class UserEntity {
 
-public class UserDto {
-    private UserEntity userEntity;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "num")
     private Long userNum;
 
+    @Column(unique = true)
     private String userId;
 
     private String userPassword;
@@ -25,7 +32,10 @@ public class UserDto {
 
     private String userLocation;
 
+    @Column(unique = true)
     private String userNickName;
 
     private String role;
+
+
 }

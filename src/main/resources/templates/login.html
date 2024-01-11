@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{layouts/layout}" lang="en">
+      layout:decorate="~{layouts/layout}" lang="en">
 
 <head>
     <link rel="stylesheet" href="../static/css/login,main,signup.css" th:href="@{/css/login,main,signup.css}">
@@ -14,27 +14,26 @@
         <p class="text-white-50 mt-2 mb-5">서비스를 사용하려면 로그인을 해주세요!</p>
 
         <div class="mb-2">
-            <form action="/login" method="POST" >
-                <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}" />
+            <form action="/login" method="POST">
+                <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}"/>
                 <div class="mb-3">
                     <label class="form-label text-white">아이디</label>
-                    <input type="text" class="form-control" name="userId" th:field="*{user.userId}">
+                    <input type="text" class="form-control" name="userId">
                 </div>
                 <div class="mb-3">
                     <label class="form-label text-white">비밀번호</label>
-                    <input type="password" class="form-control" name="userPassword"  th:field="*{user.userPassword}">
+                    <input type="password" class="form-control" name="userPassword" >
                 </div>
                 <button type="submit" class="btn btn-primary">로그인</button>
             </form>
         </div>
-            <a href="/signup" th:href="@{/signup}">회원가입</a>
-       
-
-
+        <a href="#"  >아이디 |</a>
+        <a href="#"  > 비밀번호 찾기</a>
+        <a href="/user_join" th:href="@{/user_join}">일반 회원가입 |</a>
+        <a href="/entrepre_signup" th:href="@{/entrepre_signup}"> 사업자 회원가입</a>
     </div>
 
 </div>
-
 
 
 </html>
