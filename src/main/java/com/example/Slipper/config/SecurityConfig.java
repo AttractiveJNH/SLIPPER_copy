@@ -24,8 +24,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/", "/main", "/login", "/join", "/joinProc").permitAll()
-                        .requestMatchers("/user_login","/user_loginProc").hasRole("USER")
-                        .requestMatchers("/entre_login","/entre_loginProc").hasRole("ENTRE")
+                        .requestMatchers("/user_loginProc").hasRole("USER")
+                        .requestMatchers("/entre_loginProc").hasRole("ENTRE")
                         .requestMatchers("/mypage/**").hasAnyRole("ADMIN", "ENTREPRE", "USER")
                         .anyRequest().authenticated());
 
