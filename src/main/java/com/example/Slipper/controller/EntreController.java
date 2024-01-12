@@ -19,29 +19,14 @@ public class EntreController {
     @Autowired
     private JoinService joinService;
 
-    // 로그인 페이지 맵핑
-
-    @GetMapping("/login")
-    public String loginP(){
-        return "login";
-    }
-
-    // 로그인 성공 시 맵핑
-    @PostMapping("/login")
-    public String login(){
-
-        return "main";
-    }
-
-
     // 사업자 회원 가입 맵핑
-    @GetMapping("/entre_join")
+    @GetMapping("/entrepre_join")
     public String entreJoinP(){
         return "signup/entre_signup";
     }
 
     //회원가입 성공 시 맵핑
-    @PostMapping("/entre_joinProc")
+    @PostMapping("/entrepre_joinProc")
     public String entreJoinProc(EntreDto entreDto){
 
 

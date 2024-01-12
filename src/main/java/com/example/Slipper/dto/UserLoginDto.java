@@ -8,6 +8,8 @@ public class UserLoginDto {
     private String password;
 
     private String userType;
+
+
     
 
 }

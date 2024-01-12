@@ -29,17 +29,34 @@ public class JoinService {
     public void userJoinProcess(UserDto userDto) {
 
 
-        UserEntity userEntityData = new UserEntity();
-        userEntityData.setUserId(userDto.getUserId());
-        userEntityData.setUserPassword(passwordEncoder.encode(userDto.getUserPassword()));
-        userEntityData.setUserBirthDate(userDto.getUserBirthDate());
-        userEntityData.setUserName(userDto.getUserName());
-        userEntityData.setUserLocation(userDto.getUserLocation());
-        userEntityData.setUserPhone(userDto.getUserPhone());
-        userEntityData.setUserNickName(userDto.getUserNickName());
-        userEntityData.setRole("USER");
+        UserEntity user = new UserEntity();
 
-        userRepository.save(userEntityData);
+
+        validateDuplicateUser(user);
+        user.setUserId(userDto.getUserId());
+        user.setUserPassword(passwordEncoder.encode(userDto.getUserPassword()));
+        user.setUserBirthDate(userDto.getUserBirthDate());
+        user.setUserName(userDto.getUserName());
+        user.setUserLocation(userDto.getUserLocation());
+        user.setUserPhone(userDto.getUserPhone());
+        user.setUserNickName(userDto.getUserNickName());
+        user.setRole("USER");
+
+        userRepository.save(user);
+    }
+
+    private void validateDuplicateUser(UserEntity user){
+        UserEntity findUser = userRepository.findByUserId(user.getUserId());
+        if(findUser != null){
+            throw new IllegalStateException("이미 가입된 회원입니다.");
+        }
+    }
+
+    private void validateDuplicateUserNickName(UserEntity user){
+        UserEntity findUser = userRepository.findByUserNickName(user.getUserNickName());
+        if(findUser != null){
+            throw new IllegalStateException("이미 존재하는 닉네임입니다.");
+        }
     }
 
 
@@ -47,19 +64,21 @@ public class JoinService {
     public void entreJoinProcess(EntreDto entreDto) {
 
 
-        EntreEntity entreEntityData = new EntreEntity();
-        entreEntityData.setEntrepreId(entreDto.getEntrepreId());
-        entreEntityData.setEntreprePassword(passwordEncoder.encode(entreDto.getEntreprePassword()));
-        entreEntityData.setEntrepreName(entreDto.getEntrepreName());
-        entreEntityData.setEntrepreLocation(entreDto.getEntrepreLocation());
-        entreEntityData.setEntreprePhone(entreDto.getEntreprePhone());
-        entreEntityData.setEntrepreNickName(entreDto.getEntrepreNickName());
-        entreEntityData.setEntrepreRegNum(entreDto.getEntrepreRegNum());
-        entreEntityData.setEntrepreRegDay(entreDto.getEntrepreRegDay());
-        entreEntityData.setEntrepreBusinessName(entreDto.getEntrepreBusinessName());
-        entreEntityData.setEntrepreAddress(entreDto.getEntrepreAddress());
-        entreEntityData.setRole("ENTREPRENEUR");
+        EntreEntity entre = new EntreEntity();
+        entre.setEntrepreId(entreDto.getEntrepreId());
+        entre.setEntreprePassword(passwordEncoder.encode(entreDto.getEntreprePassword()));
+        entre.setEntrepreName(entreDto.getEntrepreName());
+        entre.setEntrepreLocation(entreDto.getEntrepreLocation());
+        entre.setEntreprePhone(entreDto.getEntreprePhone());
+        entre.setEntrepreNickName(entreDto.getEntrepreNickName());
+        entre.setEntrepreRegNum(entreDto.getEntrepreRegNum());
+        entre.setEntrepreRegDay(entreDto.getEntrepreRegDay());
+        entre.setEntrepreBusinessName(entreDto.getEntrepreBusinessName());
+        entre.setEntrepreAddress(entreDto.getEntrepreAddress());
+        entre.setRole("ENTREPRENEUR");
 
-        entreRepository.save(entreEntityData);
+        entreRepository.save(entre);
     }
+
+
 }

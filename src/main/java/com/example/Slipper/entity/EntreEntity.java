@@ -2,6 +2,7 @@ package com.example.Slipper.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -11,10 +12,11 @@ import java.time.LocalDate;
 @Entity
 @Table(name="entrepreneur")
 @Getter @Setter
+@NoArgsConstructor
 public class EntreEntity {
 
 
-    private EntreEntity entreEntity;
+//    private EntreEntity entreEntity;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +25,7 @@ public class EntreEntity {
 
     private String entrepreName; // 대표자 성명
 
+    @Column(columnDefinition = "DATE")
     private LocalDate entrepreRegDay; //개업일자
 
     private String entrepreBusinessName; //상호명

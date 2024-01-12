@@ -1,14 +1,42 @@
 /* 전체 패딩 마진 계산 없이 width, height 원하는대로 적용하기 위해 추가 */
 * {
     box-sizing: border-box;
+
   }
   
+  h1{
 
-#contains{
+    margin-top: 300px;
+    margin-left: 300px;
+  }
+
+
+
+
+.box1{
+
     
-    width: 500px;
+    width: 700px;
+    height: 350px;
+    background-color: rgb(181,181,181);
     margin: 0 auto;
-    text-align: center;
-    /* margin-left:600px; */
+    
+}
 
+li {
+
+    list-style: none;
+}
+
+
+
+
+.box2{
+
+    
+    width: 700px;
+    height: 450px;
+    background-color: rgb(181,181,181);
+    margin: 0 auto;
+    
 }
