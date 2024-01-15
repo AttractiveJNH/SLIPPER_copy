@@ -1,38 +1,91 @@
 <!DOCTYPE html>
 <html
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layouts/layout}"
-  lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/layout}"
+        lang="en"
 >
 
 <head>
-<!--  <link rel="stylesheet" href="../static/css/login,main,signup.css" th:href="@{/css/login,main,signup.css}">-->
-  <link rel="stylesheet" href="/css/login,main,signup.css" th:href="@{/css/login,main,signup.css}">
+
+    <link rel="stylesheet" href="/css/mainBase.css" th:href="@{/css/mainBase.css}">
+
 </head>
 
 <body>
-    <div layout:fragment="content">
-        <h1>일반</h1>
-        <div class="container">
-          <div class="box1">
+<div layout:fragment="content">
+
+    <!--일반 게시판 -->
+    <h1>일반</h1>
+    <div class="box">
+
+        <div class="inner box1">
             <ul>
-              <li><a href="#">글</a></li>
-              
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
             </ul>
-            
-          </div>
-          <h1>모임</h1>
-          <div class="box1">
-          </div>
-        <h1>홍보</h1>
-        <div class="box2">
         </div>
+        <div class="inner box2">
+            <ul>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+            </ul>
         </div>
-        
     </div>
 
+    <!--    모임 게시판-->
 
-  </body>
+    <h1>모임</h1>
+    <div class="box">
+        <div class="inner box1">
+            <ul>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+            </ul>
+        </div>
+        <div class="inner box2">
+            <ul>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+            </ul>
+        </div>
+    </div>
 
+    <!--    홍보 게시판-->
+
+    <h1>홍보</h1>
+    <div class="prBox">
+        <div class="prBox_inner">
+            <h3>일반</h3>
+            <ul class="prList">
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+            </ul>
+        </div>
+
+        <div class="prBox_inner">
+            <h3>이벤트</h3>
+            <ul class="prList">
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+            </ul>
+        </div>
+        <div class="prBox_inner">
+            <h3>체험</h3>
+            <ul class="prList">
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+                <li><a href="#">글</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>

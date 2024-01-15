@@ -3,6 +3,7 @@
     box-sizing: border-box;
 
   }
+
   
   h1{
 
@@ -10,33 +11,37 @@
     margin-left: 300px;
   }
 
-
+.boxWrapper{
+    display: inline-bock;
+    width: 335px;
+    height: 320px;
+    background-color: rgb(181,181,181);
+    margin: 0 auto;
+    column-count :
+}
 
 
 .box1{
 
-    
+
     width: 700px;
     height: 350px;
     background-color: rgb(181,181,181);
     margin: 0 auto;
-    
+
 }
 
-li {
 
-    list-style: none;
-}
 
 
 
 
 .box2{
 
-    
+
     width: 700px;
     height: 450px;
     background-color: rgb(181,181,181);
     margin: 0 auto;
-    
+
 }

@@ -1,0 +1,92 @@
+/* 전체 패딩 마진 계산 없이 width, height 원하는대로 적용하기 위해 추가 */
+* {
+    box-sizing: border-box;
+
+  }
+
+
+  h1{
+
+    margin-top: 100px;
+    margin-left: 300px;
+  }
+
+li {
+
+    list-style: none;
+    line-height: 300%;
+
+}
+
+
+
+    /* 부모의 길이의 반에서 가운데 여백길이만큼을 빼기*/
+.box{
+        width: 700px;
+        height: 200px;
+        background-color: rgb(181,181,181);
+        padding: 10px;
+
+        margin : 0 auto;
+       }
+
+.box::after{
+        clear: both;
+        content: '';
+        display: block;
+        }
+
+.inner{
+        width: calc(50% - 5px);
+        background-color: rgb(181,181,181);
+        height: 100%; float:left;
+        }
+
+.box2{
+    float: right;
+    }
+
+.prBox{
+
+          width: 700px;
+          height: 900px;
+          background-color: rgb(181,181,181);
+          padding: 10px;
+
+           margin : 0 auto;
+}
+
+.prBox_inner{
+
+    width: 650px;
+    height: 270px;
+    padding: 30px;
+
+    margin: 0 auto;
+}
+
+.prList{
+
+    list-style: none;
+
+}
+
+.prList >li {
+
+    float: left;
+    margin-right: 30px;
+}
+
+
+/*
+@media screen and (max-width: 768px) {
+    .box{
+
+
+        width: 50%;
+
+    }
+
+}
+*/
+
