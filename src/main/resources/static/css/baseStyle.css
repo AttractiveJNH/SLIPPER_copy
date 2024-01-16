@@ -1,6 +1,8 @@
 /* 전체 패딩 마진 계산 없이 width, height 원하는대로 적용하기 위해 추가 */
 * {
   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
 }
 
 /* 헤더부분 */
@@ -9,6 +11,7 @@
   background-color: rgb(80, 80, 80);
   font-size: 30px;
   color: white;
+  font-family: 'Noto Sans', sans-serif;
 }
 /* 헤더 아래 회색부분 */
 .header_under {
@@ -16,6 +19,13 @@
   display: flex;
   justify-content: center;
   background-color: rgb(249, 248, 252);
+  height: 100px;
+  font-size: 36 px;
+
+}
+
+.header_under ul{
+    margin-bottom : 20px;
 }
 .wrapper {
   width: 100%;
