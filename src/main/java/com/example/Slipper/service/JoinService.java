@@ -7,9 +7,12 @@ import com.example.Slipper.entity.UserEntity;
 import com.example.Slipper.repository.EntreRepository;
 import com.example.Slipper.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -33,6 +36,7 @@ public class JoinService {
 
 
         validateDuplicateUser(user);
+        validateDuplicateUserNickName(user);
         user.setUserId(userDto.getUserId());
         user.setUserPassword(passwordEncoder.encode(userDto.getUserPassword()));
         user.setUserBirthDate(userDto.getUserBirthDate());
@@ -45,6 +49,7 @@ public class JoinService {
         userRepository.save(user);
     }
 
+    //ID 중복확인
     private void validateDuplicateUser(UserEntity user){
         UserEntity findUser = userRepository.findByUserId(user.getUserId());
         if(findUser != null){
@@ -52,6 +57,7 @@ public class JoinService {
         }
     }
 
+    // 닉네임 중복 확인
     private void validateDuplicateUserNickName(UserEntity user){
         UserEntity findUser = userRepository.findByUserNickName(user.getUserNickName());
         if(findUser != null){
@@ -78,6 +84,19 @@ public class JoinService {
         entre.setRole("ENTREPRENEUR");
 
         entreRepository.save(entre);
+    }
+
+
+    // ID 중복 체크
+    public Boolean checkIdDuplicate(String userId) {
+
+        return userRepository.existsByUserId(userId);
+    }
+
+    // 닉네임 중복 체크
+    public Boolean checkDuplicate(String userNickName) {
+
+        return userRepository.existsByUserNickName(userNickName);
     }
 
 

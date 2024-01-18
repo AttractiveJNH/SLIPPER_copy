@@ -25,6 +25,13 @@
 
 }
 
+.grayBox{
+
+   width: 750px;
+   height: 500px;
+   background-color: rgb(249, 248, 252);
+}
+
 form > input{
     width: 100%;
     height: 48px;

@@ -1,41 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>분할예제 방법1</title>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
-    /* 부모의 길이의 반에서 가운데 여백길이만큼을 빼기*/
-    .box{width: 400px; height: 200px; background-color: thistle; padding: 10px;}
-    .box::after{clear: both; content: ''; display: block;}
-    .inner{width: calc(50% - 5px); background-color: teal; height: 100%; float:left;}
-    .box2{float: right;}    
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+
+    
+    /* 사이드바 */
+    .sidenav {
+      background-color: #f1f1f1;
+      position: fixed;
+      width: 200px;
+      height: 100%;
+      margin-left: -20px;
+      margin-top:50px
+    }
+    /* 본문 */
+    .page {
+     margin-top:50px;
+     margin-left: 250px;
+    }
+    
+    /* footer */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
   </style>
 </head>
 <body>
-  <div class="box">
-    <div class="inner box1">
-        <ul style="list-style-type: none; ">
-            <li><a href="#">글</a></li>
-            <li>글</li>
-            <li>글</li>
-            <li>글</li>
-            <li>글</li>
-            <li>글</li>
 
-        </ul>        
-    </div>
-    <div class="inner box2">
-        <ul>
-             <li>글</li>
-            <li>글</li>
-            <li>글</li>
-            <li>글</li>
-            <li>글</li>
-            <li>글</li>
-        </ul>      
-    </div>
-  </div>
+
+<div class="container-fluid">
+
+  	<!-- 사이드바 -->
+    <nav class="col-sm-3 sidenav">
+      <h4>John's Blog</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Home</a></li>
+        <li><a href="#section2">Friends</a></li>
+        <li><a href="#section3">Family</a></li>
+        <li><a href="#section3">Photos</a></li>
+      </ul>
+    </nav>
+	<!-- 사이드바 끝 -->
+</div>
+
+
 </body>
 </html>
+

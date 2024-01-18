@@ -2,11 +2,15 @@ package com.example.Slipper.config;
 
 import org.hibernate.cache.spi.support.CacheUtils;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+@Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
 
@@ -37,8 +41,8 @@ public class SecurityConfig {
                         .loginProcessingUrl("/entreloginProc")
                         .permitAll());
 
-        http
-                .csrf((auth)->auth.disable());
+//        http
+//                .csrf((auth)->auth.disable());
 
         // 개발중이니까 disable
 
