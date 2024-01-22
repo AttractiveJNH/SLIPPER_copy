@@ -14,65 +14,76 @@
             th:href="@{/css/baseStyle.css}"
     />
 
-    <script
-            src="https://kit.fontawesome.com/7abcd14278.js"
-            crossorigin="anonymous"
-    ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <style>
-        .sidenav {
-              background-color: #f1f1f1;
-              position: fixed;
-              width: 200px;
-              height: 100%;
-              margin-left: -20px;
-              margin-top:50px
-       }
-    </style>
+    <link
+            rel="stylesheet"
+            href="/css/myPage.css"
+            th:href="@{/css/myPage.css}"
+    />
 
     <title>SLIPPER</title>
-</head>
-<body>
-<div th:fragment="header">
-    <section id="header">
-        <div class="wrapper">
-            <div class="title">
-                <label for="logo">
-                    <a href="/main"
-                       style="color: white"
-                    ><img
-                            src="/images/slipperIcon.png"
-                            alt="홈페이지로고"
-                            width="30px"
-                            height="30px"
-                    />
-                        SLIPPER
-                    </a>
-                </label>
-            </div>
 
-            <form method="get">
-                <label for="search">
-                    <div class="search">
-                        <input type="text"/>
-                        <button type="submit" value="Search"/>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                </label>
-            </form>
-            <div class="log"><a href="/login" style="color: white">Log In</a></div>
+
+</head>
+
+<div th:fragment="header">
+
+    <div class="wrapper">
+        <div class="title">
+            <label for="logo">
+                <a href="/main"
+                   style="color: white"
+                ><img
+                        src="/images/slipperIcon.png"
+                        alt="홈페이지로고"
+                        width="30px"
+                        height="30px"
+                />
+                    SLIPPER
+                </a>
+            </label>
         </div>
-        <div class="header_under">
-            <ul class="lists">
+
+        <form method="get">
+            <label for="search">
+                <div class="search">
+                    <input type="text"/>
+                    <button type="submit" value="Search"/>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </label>
+        </form>
+        <div class="log"><a href="/login" style="color: white">Log In</a></div>
+    </div>
+    <div class="header_under">
+        <ul class="lists">
+            <li>
+                <a href="#">일반</a>
+            </li>
+            <li>
+                <a href="#">모임</a>
+            </li>
+            <li>
+                <a href="#">홍보</a>
+            </li>
+            <li>
+                <a href="#">리뷰</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="side_wrap">
+        <div class="side_header" style="color: #ffffff;">
+            <a>마이페이지</a>
+        </div>
+        <div class="side_middle">
+            <br>
+            <a href="#">내 정보</a>
+
+            <ul><span><a href="#">내가 쓴 글</a></span>
                 <li>
                     <a href="#">일반</a>
                 </li>
+
                 <li>
                     <a href="#">모임</a>
                 </li>
@@ -83,39 +94,21 @@
                     <a href="#">리뷰</a>
                 </li>
             </ul>
+            <div>
+                <a href="#">내 쪽지함</a>
+            </div>
         </div>
-        <div class="container-fluid">
 
 
+        <div class="side_footer_f">
+            <label for="exit">
+            <a href="#">회원 탈퇴</a>
+            </label>
         </div>
-    </section>
-    <!-- 사이드바 -->
-    <div id="sideNav">
-        마이페이지
-        <p><a href="#">내 정보</a></p>
-        <p>
-            <a href="#">내가 쓴 글</a>
-        <ul>
-            <li><a href="#">일반</a></li>
-            <li><a href="#">모임</a></li>
-            <li><a href="#">홍보</a></li>
-            <li><a href="#">리뷰</a></li>
-        </ul>
-        </p>
-        <p><a href="#">내 쪽지함</a></p>
-        <p><a href="#">회원탈퇴</a></p>
+
     </div>
-    <!-- 사이드바 끝 -->
+
 </div>
 
 
-
-</body>
-
-<script>
-    $("#toggle").click(function () {
-      $(".lists").toggle(400);
-      $(".log").toggle(400);
-    });
-</script>
 </html>

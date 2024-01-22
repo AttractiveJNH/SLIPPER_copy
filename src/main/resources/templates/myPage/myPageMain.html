@@ -6,40 +6,26 @@
         lang="en"
 >
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link
-            rel="stylesheet"
-            href="/css/baseStyle.css"
-            th:href="@{/css/baseStyle.css}"
-    />
 
-    <link
-            rel="stylesheet"
-            href="/css/myHeader.css"
-            th:href="@{/css/myHeader.css/css/myHeader.css}"
-    />
-    <script
-            src="https://kit.fontawesome.com/7abcd14278.js"
-            crossorigin="anonymous"
-    ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&display=swap" rel="stylesheet">
-
-    <!--  구글 아이콘 땡겨쓰기-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <title>SLIPPER</title>
+<!--    비밀번호 변경 팝업창 펑션-->
+    <script type="text/javascript">
+        window.onload = function(){
+       document.getElementById("edit").onclick = function(){
+           window.open("/myPage/password_edit","","width=700px,height=500px,top=200px,left=200px;");
+       }
+   };
+    </script>
 </head>
 
+<title>SLIPPER</title>
 
-<div layout:fragment="content">
+<div layout:fragment="content" id="myPageContent">
 
-    <div class="myPageContent">
+
+    <div>
         <label for="utId">
             <h4>아이디</h4>
-            <p th:text="${userInfo.userId}"></p>
+            <!--                <p th:text="${userInfo.userId}"></p>-->
         </label>
         <label for="utId">
             <h4>닉네임</h4>
@@ -63,8 +49,7 @@
         </label>
 
         <button type="submit" value="변경하기">변경하기</button>
-        <button type="submit" value="비밀번호 변경하기">비밀번호 변경하기</button>
+        <button type="button" value="비밀번호 변경하기" id="edit">비밀번호 변경하기</button>
     </div>
-</div>
-
+    </div>
 </html>

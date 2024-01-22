@@ -27,10 +27,12 @@ public class SecurityConfig {
         //권한에 따라 오픈되는 페이지 등록
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/", "/main", "/login", "/join", "/joinProc").permitAll()
+                        .requestMatchers("/", "/main", "/login", "/css/**",
+                                "/join", "/joinProc",
+                                "/myPage/**").permitAll()
                         .requestMatchers("/user_loginProc").hasRole("USER")
                         .requestMatchers("/entre_loginProc").hasRole("ENTRE")
-                        .requestMatchers("/mypage/**").hasAnyRole("ADMIN", "ENTREPRE", "USER")
+//                        .requestMatchers("/myPage/**").hasAnyRole("ADMIN", "ENTREPRE", "USER")
                         .anyRequest().authenticated());
 
 

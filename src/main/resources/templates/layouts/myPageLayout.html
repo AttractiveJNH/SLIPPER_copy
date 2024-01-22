@@ -17,13 +17,21 @@
       src="https://kit.fontawesome.com/7abcd14278.js"
       crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <script>
+            $("#toggle").click(function () {
+              $(".lists").toggle(400);
+              $(".log").toggle(400);
+            });
+        </script>
+
     <title>SLIPPER</title>
   </head>
 
   <!-- 내용부분 -->
   <body>
     <div th:replace="~{fragments/myPageHeader::header}"></div>
-
+<!--    <div th:replace="~{fragments/sideBar::sidebar}"></div>-->
     <div layout:fragment="content"></div>
 
     <div th:replace="~{fragments/footer::footer}"></div>
