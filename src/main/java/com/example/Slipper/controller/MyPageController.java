@@ -29,5 +29,11 @@ public class MyPageController {
         model.addAttribute("userInfo", userInfo);
         return "myPage/myPageMain";
     }
+
+    @GetMapping("/myArticleList")
+    public String myArticleListP(){
+
+        return "myPage/myArticleList";
+    }
    
 }
