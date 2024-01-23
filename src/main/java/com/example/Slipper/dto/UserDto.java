@@ -43,4 +43,6 @@ public class UserDto {
     private String userNickName;
 
     private String role;
+
+
 }

@@ -26,7 +26,7 @@ public class EntreController {
     }
 
     //회원가입 성공 시 맵핑
-    @PostMapping("/entrepre_joinProc")
+    @PostMapping("/entrepre_join")
     public String entreJoinProc(EntreDto entreDto){
 
 

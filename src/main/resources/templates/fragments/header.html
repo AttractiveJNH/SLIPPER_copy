@@ -21,7 +21,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&display=swap" rel="stylesheet">
 
-  <title>SLIPPER</title>
+  <title th:text="|${pageName}|"></title>
+
+
 </head>
     <div th:fragment="header">
       <div id="header">
@@ -50,7 +52,7 @@
               </div>
             </label>
           </form>
-          <div class="log"><a href="/login"  style="color: white">Log In</a></div>
+          <div class="log"><a href="/login"  style="color: white" >Log In</a></div>
         </div>
         <div class="header_under">
           <ul class="lists">
