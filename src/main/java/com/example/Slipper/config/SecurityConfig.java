@@ -26,7 +26,8 @@ import java.io.IOException;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final UserDetailService userService;
+
+    public final UserDetailService userService;
 
     public SecurityConfig(UserDetailService userService) {
         this.userService = userService;
@@ -40,7 +41,7 @@ public class SecurityConfig {
     }
 
 
-    /* 이 메서드는 정적 자원(static)에 대해 보한을 적용하지 않ㄴ도록 설정한다.
+    /* 이 메서드는 정적 자원(static)에 대해 보한을 적용하지 않도록 설정한다.
      * 정적 자원 = 보통 HTML, CSS, JavaScript, img 파일 등을 의미하며, 이들에 대해 보안을
      * 적용하지 않음으로써 성능을 향상시킬 수 있다. */
     @Bean
@@ -56,6 +57,7 @@ public class SecurityConfig {
         /* authorizeHttpRequest 접근 권한 설정*/
         http
                 .authorizeHttpRequests((auth) -> auth
+
                         .requestMatchers("/", "/main", "/login",
                                 "/join", "/user_join","/entre_join",
                                 "/myPage/**").permitAll()
@@ -68,8 +70,8 @@ public class SecurityConfig {
                 formLogin((auth) -> auth.loginPage("/login") // 로그인 페이지
                         .defaultSuccessUrl("/") //로그인 성공 후 페이지
                         .failureUrl("/login") // 로그인 실패 후 페이지
-                        .usernameParameter("userId") // 아이디 파라미터명 설정
-                        .passwordParameter("userPassword") // 비밀번호 파라미터명 설정
+                        .usernameParameter("loginId") // 아이디 파라미터명 설정
+                        .passwordParameter("password") // 비밀번호 파라미터명 설정
                         .loginProcessingUrl("/login_proc") // 로그인 form Action Url.
                         //로그인 성공 후 핸들러
                         .successHandler(
@@ -77,7 +79,7 @@ public class SecurityConfig {
                                     @Override
                                     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
                                         System.out.println("authentication: " + authentication.getName());
-                                        response.sendRedirect("/");
+                                        response.sendRedirect("/main");
                                     }
                                 })
                         // 로그인 실패 후 핸들러

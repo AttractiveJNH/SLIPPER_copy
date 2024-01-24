@@ -17,6 +17,7 @@ public class PrincipalDetails implements UserDetails {
         this.user = user;
     }
 
+
     //권한 관련 작업을 하기 위한 role return
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

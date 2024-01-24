@@ -4,6 +4,7 @@ package com.example.Slipper.service;
 import com.example.Slipper.entity.UserEntity;
 import com.example.Slipper.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
+
+
     private final UserRepository userRepository;
+
+
 
 
     //아이디 중복체크
@@ -42,4 +47,13 @@ public class UserService {
     }
 
 
+    public UserEntity getLoginUserByLoginId(String userId) {
+
+        if(userId == null) return null;
+
+        Optional<UserEntity> optionalUser = userRepository.findByUserId(userId);
+        if(optionalUser.isEmpty()) return null;
+
+        return optionalUser.get();
+    }
 }

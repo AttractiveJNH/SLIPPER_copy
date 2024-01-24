@@ -6,78 +6,123 @@
         lang="en"
 >
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-          rel="stylesheet"
-          href="/css/baseStyle.css"
-          th:href="@{/css/baseStyle.css}"
-  />
-  <script
-          src="https://kit.fontawesome.com/7abcd14278.js"
-          crossorigin="anonymous"
-  ></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link
+            rel="stylesheet"
+            href="/css/baseStyle.css"
+            th:href="@{/css/baseStyle.css}"
+    />
+    <script
+            src="https://kit.fontawesome.com/7abcd14278.js"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&display=swap" rel="stylesheet">
 
-  <title th:text="|${pageName}|"></title>
-
+    <title>SLIPPER</title>
 
 </head>
-    <div th:fragment="header">
-      <div id="header">
-        <div class="wrapper">
-          <div class="title">
-            <label for="logo">
-              <a href="/main"
-                 style="color: white"
-                ><img
-                  src="/images/slipperIcon.png"
-                  alt="홈페이지로고"
-                  width="30px"
-                  height="30px"
-                />
-                SLIPPER
-              </a>
-            </label>
-          </div>
 
-          <form method="get">
-            <label for="search">
-              <div class="search">
-                <input type="text" />
-                <button type="submit" value="Search" />
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </div>
-            </label>
-          </form>
-          <div class="log"><a href="/login"  style="color: white" >Log In</a></div>
+
+<div th:fragment="header">
+    <!--로그인 하기 전 헤더-->
+    <div th:if="${userId == null}">
+        <div class="header">
+            <div class="wrapper">
+                <div class="title">
+                    <label for="logo">
+                        <a href="/main"
+                           style="color: white"
+                        ><img
+                                src="/images/slipperIcon.png"
+                                alt="홈페이지로고"
+                                width="30px"
+                                height="30px"
+                        />
+                            SLIPPER
+                        </a>
+                    </label>
+                </div>
+
+
+                <form method="get">
+                    <label for="search">
+                        <div class="search">
+                            <input type="text"/>
+                            <button type="submit" value="Search"/>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                    </label>
+                </form>
+                <div class="log"><a href="/login" style="color: white">Log In</a></div>
+            </div>
         </div>
-        <div class="header_under">
-          <ul class="lists">
-            <li>
-              <a href="#">일반</a>
-            </li>
-            <li>
-              <a href="#">모임</a>
-            </li>
-            <li>
-              <a href="#">홍보</a>
-            </li>
-            <li>
-              <a href="#">리뷰</a>
-            </li>
-          </ul>
+
+
+        <!--로그인 후 헤더-->
+
+        <div th:unless="${userId == null}">
+            <div class="header">
+                <div class="wrapper">
+                    <div class="title">
+                        <label for="logo">
+                            <a href="/main"
+                               style="color: white"
+                            ><img
+                                    src="/images/slipperIcon.png"
+                                    alt="홈페이지로고"
+                                    width="30px"
+                                    height="30px"
+                            />
+                                SLIPPER
+                            </a>
+                        </label>
+                    </div>
+
+
+                    <form method="get">
+                        <label for="search">
+                            <div class="search">
+                                <input type="text"/>
+                                <button type="submit" value="Search"/>
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </label>
+                    </form>
+                    <div><span th:text="${nickName}">님</span></div>
+                    <div class="Note"><a href="#" style="color: white">Note</a></div>
+                    <div class="logOut"><a href="/logout" style="color: white">LogOut</a></div>
+                </div>
+            </div>
+
+
+            <div class="header_under">
+                <ul class="lists">
+                    <li>
+                        <a href="#">일반</a>
+                    </li>
+                    <li>
+                        <a href="#">모임</a>
+                    </li>
+                    <li>
+                        <a href="#">홍보</a>
+                    </li>
+                    <li>
+                        <a href="#">리뷰</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
-  </body>
+</div>
 
-  <script>
+
+<script>
     $("#toggle").click(function () {
       $(".lists").toggle(400);
       $(".log").toggle(400);
     });
-  </script>
+</script>
 </html>

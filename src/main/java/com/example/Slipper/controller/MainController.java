@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/slipper")
+
 public class MainController {
 
     private  final UserService userService;
@@ -27,9 +27,6 @@ public class MainController {
 
     @GetMapping("/main")
     public String mainPage(Model model, Authentication auth){
-
-        model.addAttribute("loginType", "/slipper");
-        model.addAttribute("pageName", "SLIPPER");
 
         if (auth != null){
             UserEntity loginUser = userService.getLoginUserByLoginId(auth.getName());
@@ -42,8 +39,9 @@ public class MainController {
 
 
     @GetMapping("/login")
-    public String loginP(){
+    public String loginP(Model model){
 
+        model.addAttribute("loginRequest", new LoginRequest());
         return "login";
     }
 
@@ -53,7 +51,7 @@ public class MainController {
 
 
 
-        return "main";
+        return "redirect:/main";
     }
 
     /**

@@ -70,7 +70,10 @@
                         </div>
                         <div class="userPassword_re">
                             비밀번호 확인
-                            <input type="password">
+                            <input type="password" th:field="*{userPasswordCheck}" class="form-control"
+                                   placeholder="비밀번호를 한번 더 입력해 주세요.">
+                            <p th:if="${#fields.hasErrors('userPasswordCheck')}"
+                               th:errors="*{userPasswordCheck}" class="fieldError">Incorrect data</p>
                         </div>
                         <div class="form-group">
                             <label th:for="userBirthDate">생일</label>

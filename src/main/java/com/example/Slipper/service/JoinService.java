@@ -11,8 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor
+
 @Service
+@RequiredArgsConstructor
 public class JoinService {
 
     @Autowired
@@ -55,7 +56,7 @@ public class JoinService {
         entre.setEntrepreId(entreDto.getEntrepreId());
         entre.setEntreprePassword(passwordEncoder.encode(entreDto.getEntreprePassword()));
         entre.setEntrepreName(entreDto.getEntrepreName());
-          entre.setEntrepreLocation(entreDto.getEntrepreLocation() != null ? entreDto.getEntrepreLocation().replace(",","") : null);
+        entre.setEntrepreLocation(entreDto.getEntrepreLocation() != null ? entreDto.getEntrepreLocation().replace(",","") : null);
         entre.setEntreprePhone(entreDto.getEntreprePhone());
         entre.setEntrepreNickName(entreDto.getEntrepreNickName());
         entre.setEntrepreRegNum(entreDto.getEntrepreRegNum());

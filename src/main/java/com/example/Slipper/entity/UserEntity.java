@@ -22,28 +22,30 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "num")
+    @Column(name = "user_num")
     private Long userNum; // 유저pk
 
-    @Column(name = "id",unique = true, nullable = false)
+    @Column(name = "user_id",unique = true, nullable = false)
     private String userId; // 유저 아이디
 
-    @Column(name="password", nullable = false) // 비밀번호
+    @Column(name="user_password", nullable = false) // 비밀번호
     private String userPassword;
 
-    @Column(name="name", nullable = false)
+
+
+    @Column(name="user_name", nullable = false)
     private String userName; // 이름
 
-    @Column(name="birth_date", nullable = false)
+    @Column(name="user_birth_date")
     private LocalDate userBirthDate; // 생일
 
-    @Column(name="phone", nullable = false)
+    @Column(name="user_phone", nullable = false)
     private String userPhone; // 연락처
 
-    @Column(name="location", nullable = false)
+    @Column(name="user_location", nullable = false)
     private String userLocation; // 지역
 
-    @Column(name="nick_name", nullable = false, unique = true)
+    @Column(name="user_nick_name",unique = true)
     private String userNickName; // 닉네임
 
 

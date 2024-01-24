@@ -1,9 +1,7 @@
 package com.example.Slipper.dto;
 
 import com.example.Slipper.entity.UserEntity;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,10 +23,12 @@ public class UserDto {
     @Size(min = 6, max = 12, message = "비밀번호는 6글자 이상 12글자 이하로 입력해주세요.")
     private String userPassword;
 
+    private String userPasswordCheck;
+
     @NotBlank(message = "이름을 입력해주세요.")
     private String userName;
 
-    @NotBlank(message = "생일을 입력해주세요.")
+    @NotNull(message = "생일을 입력해주세요.")
     private LocalDate userBirthDate;
 
     @NotBlank(message = "휴대폰 번호를 입력해주세요.")
