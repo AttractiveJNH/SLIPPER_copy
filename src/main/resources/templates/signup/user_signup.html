@@ -21,23 +21,23 @@
 
 <th:block layout:fragment="script">
     <script th:inline="javascript">
-    // 지역 선택값 가져오기
+        // 지역 선택값 가져오기
 
-    $("#userLocation").change(function () {
+        $("#userLocation").change(function () {
 
+                });
+
+
+
+
+
+
+        //에러메세지
+        $(document).ready(function ()
+            var errorMessage = [[${errorMessage}]];
+            if(errorMessage != null){
+                alert(errorMessage);
             });
-
-
-
-
-
-
-    //에러메세지
-    $(document).ready(function ()
-        var errorMessage = [[${errorMessage}]];
-        if(errorMessage != null){
-            alert(errorMessage);
-        });
 
     </script>
 </th:block>

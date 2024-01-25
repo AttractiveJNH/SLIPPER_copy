@@ -1,20 +1,20 @@
 package com.example.Slipper.config;
 
-import com.example.Slipper.service.UserDetailService;
+import com.example.Slipper.repository.UserRepository;
+import com.example.Slipper.service.securityService.EntreDetailService;
+import com.example.Slipper.service.securityService.UserDetailService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -24,13 +24,16 @@ import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
+
 public class SecurityConfig {
 
 
     public final UserDetailService userService;
 
-    public SecurityConfig(UserDetailService userService) {
+    public final UserRepository userRepository;
+    public SecurityConfig(UserDetailService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     // 비밀번호 암호화 Bean
@@ -53,15 +56,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
+
         //권한에 따라 오픈되는 페이지 등록
         /* authorizeHttpRequest 접근 권한 설정*/
         http
                 .authorizeHttpRequests((auth) -> auth
 
                         .requestMatchers("/", "/main", "/login",
-                                "/join", "/user_join","/entre_join",
+                                "/join", "/user_join", "/entre_join",
                                 "/myPage/**").permitAll()
-//                        .requestMatchers().hasRole("ADMIN")
+//                        .requestMatchers("/**").permitAll()
+////                        .requestMatchers().hasRole("ADMIN")
                         .anyRequest().authenticated());
 
 
@@ -107,6 +112,29 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/"));
         return http.build();
     }
+
+//
+//    //유저 로그인 빈
+//    @Bean
+//    DaoAuthenticationProvider userAuthenticationProvider(){
+//
+//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+//        daoAuthenticationProvider.setUserDetailsService(new UserDetailService());
+//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//
+//        return daoAuthenticationProvider;
+//    }
+//    // 사업자 로그인
+//     @Bean
+//    DaoAuthenticationProvider entreAuthenticationProvider(){
+//
+//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+//        daoAuthenticationProvider.setUserDetailsService(new EntreDetailService());
+//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//
+//        return daoAuthenticationProvider;
+//    }
+
 
 
 }
