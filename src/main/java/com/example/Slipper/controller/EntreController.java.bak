@@ -31,7 +31,7 @@ public class EntreController {
 
 
 
-        log.info(entreDto.getEntrepreId());
+         log.info(entreDto.getEntrepreId());
 
         joinService.entreJoinProcess(entreDto);
         return "redirect:/login";
