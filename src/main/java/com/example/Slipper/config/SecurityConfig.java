@@ -1,7 +1,7 @@
 package com.example.Slipper.config;
 
 import com.example.Slipper.repository.UserRepository;
-import com.example.Slipper.service.securityService.EntreDetailService;
+
 import com.example.Slipper.service.securityService.UserDetailService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,7 +9,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -28,11 +30,11 @@ import java.io.IOException;
 public class SecurityConfig {
 
 
-    public final UserDetailService userService;
+    public final UserDetailService userDetailService;
 
     public final UserRepository userRepository;
-    public SecurityConfig(UserDetailService userService, UserRepository userRepository) {
-        this.userService = userService;
+    public SecurityConfig(UserDetailService userDetailService, UserRepository userRepository) {
+        this.userDetailService = userDetailService;
         this.userRepository = userRepository;
     }
 
@@ -42,6 +44,32 @@ public class SecurityConfig {
 
         return new BCryptPasswordEncoder();
     }
+
+   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // 인증(로그인) 메서드 구현하기 위해 userDetailsService 로 유저의 username,password,role등 을 찾아서 인증
+        auth
+                .userDetailsService(userDetailService)
+                .passwordEncoder(passwordEncoder());
+    }
+
+//   @Bean
+//
+//     DaoAuthenticationProvider userAuthProvider(){
+//     DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+//        daoAuthenticationProvider.setUserDetailsService(new UserDetailService(userRepository));
+//       daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//
+//        return daoAuthenticationProvider;
+//    }
+//    @Bean
+//
+//     DaoAuthenticationProvider entreAuthProvider(){
+//     DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+//        daoAuthenticationProvider.setUserDetailsService(new EntreDetailService());
+//       daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//
+//        return daoAuthenticationProvider;
+//    }
 
 
     /* 이 메서드는 정적 자원(static)에 대해 보한을 적용하지 않도록 설정한다.
@@ -112,29 +140,6 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/"));
         return http.build();
     }
-
-//
-//    //유저 로그인 빈
-//    @Bean
-//    DaoAuthenticationProvider userAuthenticationProvider(){
-//
-//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-//        daoAuthenticationProvider.setUserDetailsService(new UserDetailService());
-//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-//
-//        return daoAuthenticationProvider;
-//    }
-//    // 사업자 로그인
-//     @Bean
-//    DaoAuthenticationProvider entreAuthenticationProvider(){
-//
-//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-//        daoAuthenticationProvider.setUserDetailsService(new EntreDetailService());
-//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-//
-//        return daoAuthenticationProvider;
-//    }
-
 
 
 }

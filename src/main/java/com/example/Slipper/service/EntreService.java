@@ -1,24 +1,25 @@
 package com.example.Slipper.service;
 
 
+import com.example.Slipper.dto.EntreDto;
+import com.example.Slipper.entity.EntreEntity;
 import com.example.Slipper.entity.UserEntity;
+import com.example.Slipper.repository.EntreRepository;
 import com.example.Slipper.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class UserService {
+public class EntreService {
 
 
 
-    private final UserRepository userRepository;
+    private final EntreRepository entreRepository;
 
 
 
@@ -29,9 +30,9 @@ public class UserService {
      * 회원가입 기능 구현 시 사용
      * 중복되면 true return
      */
-    public boolean checkLoginIdDuplicate(String userId){
+    public boolean checkLoginIdDuplicate(String id){
 
-        return userRepository.existsById(userId);
+        return entreRepository.existsById(id);
 
     }
 
@@ -40,18 +41,18 @@ public class UserService {
      * 회원가입 기능 구현 시 사용
      * 중복되면 true return
      */
-    public boolean checkNicknameDuplicate(String userNickName) {
+    public boolean checkNicknameDuplicate(String entrepreNickName) {
 
-        return userRepository.existsByUserNickName(userNickName);
+        return entreRepository.existsByEntrepreNickName(entrepreNickName);
 
     }
 
 
-    public UserEntity getLoginUserByLoginId(String id) {
+    public EntreEntity getLoginUserByLoginId(String id) {
 
         if(id == null) return null;
 
-        Optional<UserEntity> optionalUser = userRepository.findById(id);
+        Optional<EntreEntity> optionalUser = entreRepository.findById(id);
         if(optionalUser.isEmpty()) return null;
 
         return optionalUser.get();

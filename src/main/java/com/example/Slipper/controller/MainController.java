@@ -60,7 +60,7 @@ public class MainController {
      *  loginId가 존재하지 않거나 password가 일치하지 않으면 null return
      */
     public UserEntity login(LoginRequest req) {
-        Optional<UserEntity> optionalUser = userRepository.findByUserId(req.getLoginId());
+        Optional<UserEntity> optionalUser = userRepository.findById(req.getLoginId());
 
         // loginId와 일치하는 User가 없으면 null return
         if(optionalUser.isEmpty()) {
@@ -70,7 +70,7 @@ public class MainController {
         UserEntity user = optionalUser.get();
 
         // 찾아온 User의 password와 입력된 password가 다르면 null return
-        if(!user.getUserPassword().equals(req.getPassword())) {
+        if(!user.getPassword().equals(req.getPassword())) {
             return null;
         }
 
@@ -101,7 +101,7 @@ public class MainController {
     public UserEntity getLoginUserByLoginId(String loginId) {
         if(loginId == null) return null;
 
-        Optional<UserEntity> optionalUser = userRepository.findByUserId(loginId);
+        Optional<UserEntity> optionalUser = userRepository.findById(loginId);
         if(optionalUser.isEmpty()) return null;
 
         return optionalUser.get();

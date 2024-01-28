@@ -43,7 +43,7 @@ public class UserController {
     public String userJoinProc(@Valid @ModelAttribute UserDto userDto, BindingResult bindingResult, Model model){
 
         // loginId 중복 체크
-        if(userService.checkLoginIdDuplicate(userDto.getUserId())) {
+        if(userService.checkLoginIdDuplicate(userDto.getId())) {
             bindingResult.addError(new FieldError("userDto", "userId", "로그인 아이디가 중복됩니다."));
         }
         // 닉네임 중복 체크
@@ -51,7 +51,7 @@ public class UserController {
             bindingResult.addError(new FieldError("userDto", "userNickName", "닉네임이 중복됩니다."));
         }
         // password와 passwordCheck가 같은지 체크
-        if(!userDto.getUserPassword().equals(userDto.getUserPasswordCheck())) {
+        if(!userDto.getPassword().equals(userDto.getPasswordCheck())) {
             bindingResult.addError(new FieldError("userDto", "userPasswordCheck", "바밀번호가 일치하지 않습니다."));
         }
 
@@ -63,7 +63,7 @@ public class UserController {
 
 
 
-         log.info(userDto.getUserId());
+         log.info(userDto.getId());
 
         joinService.userJoinProcess(userDto);
         return "redirect:/login";

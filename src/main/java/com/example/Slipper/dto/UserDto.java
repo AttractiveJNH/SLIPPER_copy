@@ -17,13 +17,13 @@ public class UserDto {
 
     @NotBlank(message = "아이디를 입력해주세요.")
     @Size(min = 6 , max = 15, message = "아이디는 6글자 이상 15 글자 이하로 아이디를 만들어주세요.")
-    private String userId;
+    private String id;
 
     @NotBlank(message = "비밀번호를 입력해주세요.")
     @Size(min = 6, max = 12, message = "비밀번호는 6글자 이상 12글자 이하로 입력해주세요.")
-    private String userPassword;
+    private String password;
 
-    private String userPasswordCheck;
+    private String passwordCheck;
 
     @NotBlank(message = "이름을 입력해주세요.")
     private String userName;

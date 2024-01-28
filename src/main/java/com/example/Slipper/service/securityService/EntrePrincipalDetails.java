@@ -36,12 +36,12 @@ public class EntrePrincipalDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return entre.getEntreprePassword();
+        return entre.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return entre.getEntrepreId();
+        return entre.getId();
     }
 
     @Override

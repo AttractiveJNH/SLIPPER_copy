@@ -15,16 +15,16 @@ import org.springframework.stereotype.Service;
 public class UserDetailService implements UserDetailsService {
 
     @Autowired
-    UserRepository userRepo;
+    UserRepository userRepository;
 
     @Autowired
     EntreRepository entreRepository;
 
     // 로그인 할때 사용자 정보를 가져오는 코드.
     @Override
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 
-        UserEntity user = userRepo.findByUserId(userId)
+        UserEntity user = userRepository.findById(id)
                 .orElseThrow(() -> {
                     return new UsernameNotFoundException("해당 유저를 찾을 수 없습니다.");
                 });

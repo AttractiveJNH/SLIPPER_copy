@@ -26,10 +26,10 @@ public class UserEntity {
     private Long userNum; // 유저pk
 
     @Column(name = "user_id",unique = true, nullable = false)
-    private String userId; // 유저 아이디
+    private String id; // 유저 아이디
 
     @Column(name="user_password", nullable = false) // 비밀번호
-    private String userPassword;
+    private String password;
 
 
 

@@ -31,9 +31,9 @@
                     <form action="/entrepre_join" method="POST" >
                         <!-- 토큰을 추가하여 CSRF 공격 방지 -->
                         <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}"/>
-                        <div class="entrepreId">
+                        <div class="id">
                             아이디
-                            <input type="text" name="entrepreId">
+                            <input type="text" name="id">
                         </div>
                         <div class="entreprePassword">
                             비밀번호

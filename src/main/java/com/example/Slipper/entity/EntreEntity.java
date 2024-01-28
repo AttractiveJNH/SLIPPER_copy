@@ -34,10 +34,12 @@ public class EntreEntity {
 
     private String entrepreAddress; //사업장 주소지
 
-    @Column(unique = true)
-    private String entrepreId; //대표자 아이디
+    @Column(name="entreprenuer_id",unique = true)
+    private String id; //대표자 아이디
 
-    private String entreprePassword; //대표자 비밀번호
+
+    @Column(name="entreprenuer_password",unique = true)
+    private String password; //대표자 비밀번호
 
     private String entreprePhone; //대표자 전화번호
 
