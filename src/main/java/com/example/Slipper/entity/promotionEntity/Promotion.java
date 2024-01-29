@@ -1,7 +1,7 @@
 package com.example.Slipper.entity.promotionEntity;
 
 
-import com.example.Slipper.entity.EntreEntity;
+import com.example.Slipper.entity.userAndEntreEntities.EntreEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

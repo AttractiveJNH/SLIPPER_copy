@@ -1,11 +1,9 @@
 package com.example.Slipper.controller.promotion;
 
 import com.example.Slipper.dto.promotionDto.PromoCreateDto;
-import com.example.Slipper.entity.EntreEntity;
-import com.example.Slipper.entity.SswTestEntity.Entrepreneur;
+import com.example.Slipper.entity.userAndEntreEntities.EntreEntity;
 import com.example.Slipper.entity.promotionEntity.Promotion;
-import com.example.Slipper.repository.EntreRepository;
-import com.example.Slipper.repository.EntrepreneurRepository;
+import com.example.Slipper.repository.userAndEntreRepositories.EntreRepository;
 import com.example.Slipper.repository.promotionRepository.PromotionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

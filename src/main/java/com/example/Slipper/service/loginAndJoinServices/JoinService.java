@@ -1,14 +1,13 @@
-package com.example.Slipper.service;
+package com.example.Slipper.service.loginAndJoinServices;
 
 import com.example.Slipper.dto.EntreDto;
 import com.example.Slipper.dto.UserDto;
-import com.example.Slipper.entity.EntreEntity;
-import com.example.Slipper.entity.UserEntity;
-import com.example.Slipper.repository.EntreRepository;
-import com.example.Slipper.repository.UserRepository;
+import com.example.Slipper.entity.userAndEntreEntities.EntreEntity;
+import com.example.Slipper.entity.userAndEntreEntities.UserEntity;
+import com.example.Slipper.repository.userAndEntreRepositories.EntreRepository;
+import com.example.Slipper.repository.userAndEntreRepositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 

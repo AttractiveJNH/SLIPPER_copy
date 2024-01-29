@@ -1,12 +1,9 @@
-package com.example.Slipper.service;
+package com.example.Slipper.service.loginAndJoinServices;
 
 
-import com.example.Slipper.dto.EntreDto;
 import com.example.Slipper.dto.LoginRequest;
-import com.example.Slipper.entity.EntreEntity;
-import com.example.Slipper.entity.UserEntity;
-import com.example.Slipper.repository.EntreRepository;
-import com.example.Slipper.repository.UserRepository;
+import com.example.Slipper.entity.userAndEntreEntities.EntreEntity;
+import com.example.Slipper.repository.userAndEntreRepositories.EntreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,7 +46,7 @@ public class EntreService {
     }
 
 
-    public EntreEntity getLoginUserByLoginId(String id) {
+    public EntreEntity getLoginEntreByLoginId(String id) {
 
         if(id == null) return null;
 

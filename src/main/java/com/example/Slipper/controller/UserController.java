@@ -1,9 +1,9 @@
 package com.example.Slipper.controller;
 
 import com.example.Slipper.dto.UserDto;
-import com.example.Slipper.repository.UserRepository;
-import com.example.Slipper.service.JoinService;
-import com.example.Slipper.service.UserService;
+import com.example.Slipper.repository.userAndEntreRepositories.UserRepository;
+import com.example.Slipper.service.loginAndJoinServices.JoinService;
+import com.example.Slipper.service.loginAndJoinServices.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

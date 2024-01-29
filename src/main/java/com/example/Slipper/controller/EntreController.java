@@ -2,8 +2,10 @@ package com.example.Slipper.controller;
 
 
 import com.example.Slipper.dto.EntreDto;
-import com.example.Slipper.service.EntreService;
-import com.example.Slipper.service.JoinService;
+import com.example.Slipper.service.loginAndJoinServices.EntreService;
+import com.example.Slipper.service.loginAndJoinServices.JoinService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,5 +89,15 @@ public class EntreController {
         return "redirect:/login";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, Model model) {
+        model.addAttribute("loginType", "Slipper");
+
+        HttpSession session = request.getSession(false);  // Session이 없으면 null return
+        if(session != null) {
+            session.invalidate();
+        }
+        return "redirect:/main";
+    }
 
 }

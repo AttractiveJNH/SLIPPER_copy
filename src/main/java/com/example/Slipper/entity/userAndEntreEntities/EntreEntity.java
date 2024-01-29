@@ -1,4 +1,4 @@
-package com.example.Slipper.entity;
+package com.example.Slipper.entity.userAndEntreEntities;
 
 import jakarta.persistence.*;
 import lombok.Getter;

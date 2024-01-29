@@ -1,6 +1,6 @@
 package com.example.Slipper.dto;
 
-import com.example.Slipper.entity.UserEntity;
+import com.example.Slipper.entity.userAndEntreEntities.UserEntity;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;

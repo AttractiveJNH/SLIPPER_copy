@@ -1,10 +1,9 @@
-package com.example.Slipper.service;
+package com.example.Slipper.service.loginAndJoinServices;
 
 
 import com.example.Slipper.dto.LoginRequest;
-import com.example.Slipper.entity.EntreEntity;
-import com.example.Slipper.entity.UserEntity;
-import com.example.Slipper.repository.UserRepository;
+import com.example.Slipper.entity.userAndEntreEntities.UserEntity;
+import com.example.Slipper.repository.userAndEntreRepositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -92,10 +91,10 @@ public class UserService {
      * userId가 null이거나(로그인 X) userId로 찾아온 User가 없으면 null return
      * userId로 찾아온 User가 존재하면 User return
      */
-    public UserEntity getLoginUserById(Long userId) {
-        if(userId == null) return null;
+    public UserEntity getLoginUserById(String id) {
+        if(id == null) return null;
 
-        Optional<UserEntity> optionalUser = userRepository.findById(userId);
+        Optional<UserEntity> optionalUser = userRepository.findById(id);
         if(optionalUser.isEmpty()) return null;
 
         return optionalUser.get();

@@ -1,7 +1,7 @@
 package com.example.Slipper.dto;
 
 
-import com.example.Slipper.entity.EntreEntity;
+import com.example.Slipper.entity.userAndEntreEntities.EntreEntity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;

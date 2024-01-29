@@ -1,16 +1,14 @@
 package com.example.Slipper.entity.promotionEntity;
 
 
+import com.example.Slipper.entity.userAndEntreEntities.UserEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-import java.security.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "promotion_board_comment")
@@ -40,7 +38,7 @@ public class PromotionBoardComment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_num", insertable = false, updatable = false)
-    private com.example.Slipper.entity.UserEntity user;
+    private UserEntity user;
 
 
 

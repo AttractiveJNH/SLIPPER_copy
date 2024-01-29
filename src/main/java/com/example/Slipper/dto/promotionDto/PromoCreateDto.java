@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import com.example.Slipper.entity.EntreEntity;
+import com.example.Slipper.entity.userAndEntreEntities.EntreEntity;
 
 
 import java.time.LocalDate;

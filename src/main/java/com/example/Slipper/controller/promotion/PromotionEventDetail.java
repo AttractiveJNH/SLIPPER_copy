@@ -1,7 +1,5 @@
 package com.example.Slipper.controller.promotion;
 
-import com.example.Slipper.dto.promotionDto.PromoComntDto;
-import com.example.Slipper.entity.UserEntity;
 import com.example.Slipper.entity.promotionEntity.Promotion;
 import com.example.Slipper.entity.promotionEntity.PromotionBoardComment;
 import com.example.Slipper.repository.promotionRepository.PromotionBoardCommentRepository;

@@ -1,6 +1,6 @@
-package com.example.Slipper.repository;
+package com.example.Slipper.repository.userAndEntreRepositories;
 
-import com.example.Slipper.entity.UserEntity;
+import com.example.Slipper.entity.userAndEntreEntities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

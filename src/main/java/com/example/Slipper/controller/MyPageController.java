@@ -1,7 +1,7 @@
 package com.example.Slipper.controller;
 
-import com.example.Slipper.entity.UserEntity;
-import com.example.Slipper.service.JoinService;
+import com.example.Slipper.entity.userAndEntreEntities.UserEntity;
+import com.example.Slipper.service.loginAndJoinServices.JoinService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

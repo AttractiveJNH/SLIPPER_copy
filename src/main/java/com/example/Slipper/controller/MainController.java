@@ -1,16 +1,14 @@
 package com.example.Slipper.controller;
 
 import com.example.Slipper.dto.LoginRequest;
-import com.example.Slipper.entity.EntreEntity;
-import com.example.Slipper.entity.UserEntity;
-import com.example.Slipper.repository.EntreRepository;
-import com.example.Slipper.repository.UserRepository;
-import com.example.Slipper.service.EntreService;
-import com.example.Slipper.service.UserService;
+import com.example.Slipper.entity.userAndEntreEntities.EntreEntity;
+import com.example.Slipper.entity.userAndEntreEntities.UserEntity;
+import com.example.Slipper.repository.userAndEntreRepositories.EntreRepository;
+import com.example.Slipper.repository.userAndEntreRepositories.UserRepository;
+import com.example.Slipper.service.loginAndJoinServices.EntreService;
+import com.example.Slipper.service.loginAndJoinServices.UserService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.Banner;
@@ -18,9 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
-import java.util.function.BinaryOperator;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,8 +31,23 @@ public class MainController {
     private final EntreRepository entreRepository;
 
 
-    @GetMapping("/main")
-    public String mainPage() {
+    @GetMapping(value = {"","/"})
+    public String mainPage(Model model, @SessionAttribute (name = "id", required = false) String id) {
+
+        model.addAttribute("loginType", "slipper");
+
+        UserEntity loginUser = userService.getLoginUserById(id);
+        EntreEntity loginEntre = entreService.getLoginEntreByLoginId(id);
+
+
+        //로그인이 되어있으면 userNickName 뿌려주기 
+        if(loginUser != null) {
+            model.addAttribute("userNickName", loginUser.getUserNickName());
+        }
+        // user가 아니라 entre 로그인 상태라면 entreNickName 뿌려주기
+        else if (loginEntre != null){
+            model.addAttribute("entreNickName", loginEntre.getEntrepreNickName());
+        }
 
         return "main";
     }
