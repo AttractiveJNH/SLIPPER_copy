@@ -16,6 +16,8 @@ public interface EntreRepository extends JpaRepository<EntreEntity, Long> {
 
     Optional<EntreEntity> findById(String id);
 
+    EntreEntity getById(String id);
+
     EntreEntity findByEntrepreNum(int entrepreNum);
 
 

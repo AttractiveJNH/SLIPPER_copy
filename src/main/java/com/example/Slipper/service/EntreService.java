@@ -2,6 +2,7 @@ package com.example.Slipper.service;
 
 
 import com.example.Slipper.dto.EntreDto;
+import com.example.Slipper.dto.LoginRequest;
 import com.example.Slipper.entity.EntreEntity;
 import com.example.Slipper.entity.UserEntity;
 import com.example.Slipper.repository.EntreRepository;
@@ -57,4 +58,23 @@ public class EntreService {
 
         return optionalUser.get();
     }
+
+    public EntreEntity login(LoginRequest req) {
+        Optional<EntreEntity> optionalUser = entreRepository.findById(req.getLoginId());
+
+        // loginId와 일치하는 User가 없으면 null return
+        if(optionalUser.isEmpty()) {
+            return null;
+        }
+
+        EntreEntity entre = optionalUser.get();
+
+        // 찾아온 User의 password와 입력된 password가 다르면 null return
+        if(!entre.getPassword().equals(req.getPassword())) {
+            return null;
+        }
+
+        return entre;
+    }
+
 }

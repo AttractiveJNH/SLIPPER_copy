@@ -2,12 +2,8 @@ package com.example.Slipper.controller;
 
 
 import com.example.Slipper.dto.EntreDto;
-import com.example.Slipper.dto.UserDto;
-import com.example.Slipper.repository.UserRepository;
 import com.example.Slipper.service.EntreService;
 import com.example.Slipper.service.JoinService;
-
-import com.example.Slipper.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

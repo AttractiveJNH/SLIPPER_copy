@@ -32,15 +32,15 @@ public class PromotionGenDetail {
     public String proGenDetail(@PathVariable (name = "promoBrdPostId") int promoBrdPostId, Model model){
 
 
-        // È«º¸ µ¥ÀÌÅÍ ºÒ·¯¿À±â.
+        // È«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½.
         Promotion promotion = promotionRepository.findByPromoBrdPostId(promoBrdPostId);
         model.addAttribute("promotion", promotion);
 
-        // Á¶È¸¼ö
+        // ï¿½ï¿½È¸ï¿½ï¿½
         promotion.setPromoBrdViewCount(promotion.getPromoBrdViewCount() + 1);
         promotionRepository.save(promotion);
 
-        // ´ñ±Û µ¥ÀÌÅÍ ºÒ·¯¿À±â.
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½.
         ArrayList<PromotionBoardComment> proComnt = promotionBoardCommentRepository.findByPromoBrdPostId(promoBrdPostId);
         model.addAttribute("proComnt", proComnt);
 
