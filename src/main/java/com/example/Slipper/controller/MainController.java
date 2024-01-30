@@ -11,11 +11,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -31,8 +33,35 @@ public class MainController {
     private final EntreRepository entreRepository;
 
 
-    @GetMapping(value = {"","/"})
-    public String mainPage(Model model, @SessionAttribute (name = "id", required = false) String id) {
+    @GetMapping("/main")
+    public String mainPage() {
+
+//        model.addAttribute("loginType", "slipper");
+//
+//        UserEntity loginUser = userService.getLoginUserById(id);
+//        EntreEntity loginEntre = entreService.getLoginEntreByLoginId(id);
+//
+//
+//        //로그인이 되어있으면 userNickName 뿌려주기
+//        if (loginUser != null) {
+//            model.addAttribute("nickName", loginUser.getUserNickName());
+//
+//
+//        }
+//        // user가 아니라 entre 로그인 상태라면 entreNickName 뿌려주기
+//        else if (loginEntre != null) {
+//            model.addAttribute("nickName", loginEntre.getEntrepreNickName());
+//
+//        } else {
+//            return null;
+//        }
+//
+
+        return "main";
+    }
+
+    @PostMapping("/main")
+    public String mainPage(Model model, @SessionAttribute(name = "id", required = false) String id) {
 
         model.addAttribute("loginType", "slipper");
 
@@ -40,18 +69,24 @@ public class MainController {
         EntreEntity loginEntre = entreService.getLoginEntreByLoginId(id);
 
 
-        //로그인이 되어있으면 userNickName 뿌려주기 
-        if(loginUser != null) {
-            model.addAttribute("userNickName", loginUser.getUserNickName());
+
+        //로그인이 되어있으면 userNickName 뿌려주기
+        if (loginUser != null) {
+            model.addAttribute("nickName", loginUser.getUserNickName());
+
+
         }
         // user가 아니라 entre 로그인 상태라면 entreNickName 뿌려주기
-        else if (loginEntre != null){
-            model.addAttribute("entreNickName", loginEntre.getEntrepreNickName());
+        else if (loginEntre != null) {
+            model.addAttribute("nickName", loginEntre.getEntrepreNickName());
+
+        } else {
+            return null;
         }
+
 
         return "main";
     }
-
 
     @GetMapping("/login")
     public String loginP(Model model) {
@@ -62,15 +97,14 @@ public class MainController {
 
     // 로그인 성공 시 맵핑
     @PostMapping("/login_proc")
-    public String loginRequest(@ModelAttribute LoginRequest loginRequest, BindingResult bindingResult,
-                               HttpServletRequest httpServletRequest, Model model, @RequestParam(required = false) String id) {
+    public String loginRequest(@ModelAttribute LoginRequest loginRequest, BindingResult bindingResult, HttpServletRequest httpServletRequest, Model model, @SessionAttribute(name = "id", required = false) String id) {
 
         model.addAttribute("loginType", "slipper");
 
         UserEntity user = userService.login(loginRequest);
         EntreEntity entre = entreService.login(loginRequest);
 
-        UserEntity requestUser = userRepository.getById(id) ;
+        UserEntity requestUser = userRepository.getById(id);
         EntreEntity requestEntre = entreRepository.getById(id);
         // 로그인 아이디나 비밀번호가 틀린 경우 global error return
         if (user == null && entre == null) {
@@ -91,13 +125,34 @@ public class MainController {
         if (user != null && user == requestUser) {
             session.setAttribute("id", user.getId());
             session.setMaxInactiveInterval(1800); // Session이 30분동안 유지
+
         } else if (entre != null && entre == requestEntre) {
             session.setAttribute("id", entre.getId());
             session.setMaxInactiveInterval(1800); // Session이 30분동안 유지
+
         }
+
+        if (user != null) {
+            log.info("로그인 유저 아이디 : " + user.getId());
+            log.info("유저 닉네임 : " + user.getUserNickName());
+        } else {
+            log.info("로그인 유저 아이디 : " + entre.getId());
+            log.info("유저 닉네임 : " + entre.getEntrepreNickName());
+        }
+
 
         return "redirect:/main";
     }
 
+    @GetMapping("/logOut")
+    public String logout(HttpServletRequest request, Model model) {
+        model.addAttribute("loginType", "slipper");
+
+        HttpSession session = request.getSession(false);  // Session이 없으면 null return
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/main";
+    }
 
 }
