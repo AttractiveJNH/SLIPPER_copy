@@ -27,7 +27,7 @@
 
 
 <div th:fragment="header">
-    <div th:if="${id == null}" >
+    <div th:unless="${session != null}">
 <!--        <div >-->
 
         <div class="wrapper">
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-        <div th:unless="${id == null }" >
+        <div th:if="${session != null}">
 <!--    <div  >-->
 
         <div class="wrapper">

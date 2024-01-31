@@ -8,6 +8,9 @@ import com.example.Slipper.repository.userAndEntreRepositories.EntreRepository;
 import com.example.Slipper.repository.userAndEntreRepositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -22,6 +25,9 @@ public class JoinService {
     EntreRepository entreRepository;
 
 
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
 
 
     // User 회원 가입 메서드
@@ -33,7 +39,7 @@ public class JoinService {
 
 
         user.setId(userDto.getId());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setUserBirthDate(userDto.getUserBirthDate());
         user.setUserName(userDto.getUserName());
          user.setUserLocation(userDto.getUserLocation() != null ? userDto.getUserLocation().replace(",","") : null);
@@ -52,7 +58,7 @@ public class JoinService {
 
         EntreEntity entre = new EntreEntity();
         entre.setId(entreDto.getId());
-        entre.setPassword(entreDto.getPassword());
+        entre.setPassword(passwordEncoder.encode(entreDto.getPassword()));
         entre.setEntrepreName(entreDto.getEntrepreName());
         entre.setEntrepreLocation(entreDto.getEntrepreLocation() != null ? entreDto.getEntrepreLocation().replace(",","") : null);
         entre.setEntreprePhone(entreDto.getEntreprePhone());
@@ -66,5 +72,7 @@ public class JoinService {
         entreRepository.save(entre);
     }
 
+    
+    // 비밀번호 암호화 빈
 
 }

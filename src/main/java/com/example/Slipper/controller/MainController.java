@@ -10,13 +10,13 @@ import com.example.Slipper.service.loginAndJoinServices.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
 
 
 @Controller
@@ -35,54 +35,6 @@ public class MainController {
 
     @GetMapping("/main")
     public String mainPage() {
-
-//        model.addAttribute("loginType", "slipper");
-//
-//        UserEntity loginUser = userService.getLoginUserById(id);
-//        EntreEntity loginEntre = entreService.getLoginEntreByLoginId(id);
-//
-//
-//        //로그인이 되어있으면 userNickName 뿌려주기
-//        if (loginUser != null) {
-//            model.addAttribute("nickName", loginUser.getUserNickName());
-//
-//
-//        }
-//        // user가 아니라 entre 로그인 상태라면 entreNickName 뿌려주기
-//        else if (loginEntre != null) {
-//            model.addAttribute("nickName", loginEntre.getEntrepreNickName());
-//
-//        } else {
-//            return null;
-//        }
-//
-
-        return "main";
-    }
-
-    @PostMapping("/main")
-    public String mainPage(Model model, @SessionAttribute(name = "id", required = false) String id) {
-
-        model.addAttribute("loginType", "slipper");
-
-        UserEntity loginUser = userService.getLoginUserById(id);
-        EntreEntity loginEntre = entreService.getLoginEntreByLoginId(id);
-
-
-
-        //로그인이 되어있으면 userNickName 뿌려주기
-        if (loginUser != null) {
-            model.addAttribute("nickName", loginUser.getUserNickName());
-
-
-        }
-        // user가 아니라 entre 로그인 상태라면 entreNickName 뿌려주기
-        else if (loginEntre != null) {
-            model.addAttribute("nickName", loginEntre.getEntrepreNickName());
-
-        } else {
-            return null;
-        }
 
 
         return "main";
@@ -110,7 +62,6 @@ public class MainController {
         if (user == null && entre == null) {
             bindingResult.reject("loginFail", "로그인 아이디 또는 비밀번호가 틀렸습니다.");
         }
-
 
         if (bindingResult.hasErrors()) {
             return "login";

@@ -34,6 +34,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 
+	// 비밀번호 암호화
+	implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.7.6'  /* spring-security-crypto */
+
 //	//스프링 시큐리티 스타터
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 //	// 타임리프 스프링 시큐리티 사용 의존성 추가

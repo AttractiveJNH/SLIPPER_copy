@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.thymeleaf.util.StringUtils;
 
 
 import java.time.LocalDate;
@@ -50,7 +52,13 @@ public class UserEntity {
     private String role; // 역할
 
 
-
+//    // 비밀번호 암호화.
+//    public void encodingPassword(PasswordEncoder passwordEncoder){
+//        if(StringUtils.isEmpty(password)){
+//            return;
+//        }
+//        password = passwordEncoder.encode(password);
+//    }
 
 
 

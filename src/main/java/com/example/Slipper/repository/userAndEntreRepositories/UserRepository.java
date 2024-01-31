@@ -16,7 +16,11 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     // id로 유저 정보 찾기
    Optional<UserEntity> findById(String id);
 
+   // id 값을 가져올 때 사용됨
    UserEntity getById(String id);
+
+   //탈퇴?
+    Optional<UserEntity> deleteById(String id);
    UserEntity findByUserNum(Long userNum);
 
 

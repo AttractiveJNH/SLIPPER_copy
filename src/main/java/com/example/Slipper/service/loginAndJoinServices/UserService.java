@@ -5,6 +5,8 @@ import com.example.Slipper.dto.LoginRequest;
 import com.example.Slipper.entity.userAndEntreEntities.UserEntity;
 import com.example.Slipper.repository.userAndEntreRepositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
@@ -14,6 +16,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
+    @Bean
+    BCryptPasswordEncoder bCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
 
     private final UserRepository userRepository;
@@ -50,16 +56,6 @@ public class UserService {
     }
 
 
-//    public UserEntity getLoginUserByLoginId(String id) {
-//
-//        if(id == null) return null;
-//
-//        Optional<UserEntity> optionalUser = userRepository.findById(id);
-//        if(optionalUser.isEmpty()) return null;
-//
-//        return optionalUser.get();
-//    }
-
     /**
      *  로그인 기능
      *  화면에서 LoginRequest(loginId, password)을 입력받아 loginId와 password가 일치하면 User return
@@ -79,6 +75,7 @@ public class UserService {
         if(!user.getPassword().equals(req.getPassword())) {
             return null;
         }
+
 
         return user;
     }
