@@ -1,7 +1,7 @@
 package com.example.Slipper.entity.MeetingBoardEntity;
 
 
-import com.example.Slipper.entity.SswTestEntity.Entrepreneur;
+import com.example.Slipper.entity.SswTestEntity.Entrepreneurs;
 import com.example.Slipper.entity.SswTestEntity.Users;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,9 +31,9 @@ public class MeetingBoard {
     @JoinColumn(name = "user_num", referencedColumnName = "user_num")
     private Users user_num;
 
-    @ManyToOne(targetEntity = Entrepreneur.class)
+    @ManyToOne(targetEntity = Entrepreneurs.class)
     @JoinColumn(name = "entrepre_num", referencedColumnName = "entrepre_num")
-    private Entrepreneur entrepre_num;
+    private Entrepreneurs entrepre_num;
 
     @Column(name ="meet_category")
     private int meet_category;
@@ -49,11 +48,11 @@ public class MeetingBoard {
     @Column(name ="meet_views")
     private int meet_views;
 
-    @Column(name ="meet_now_particpants")
-    private int meet_now_particpants;
+    @Column(name ="meet_now_participants")
+    private int meet_now_participants;
 
-    @Column(name ="meet_max_particpants")
-    private int meet_max_particpants;
+    @Column(name ="meet_max_participants")
+    private int meet_max_participants;
 
     @Column(name ="meet_apply_end_date")
     private LocalDate meet_apply_end_date;
@@ -66,4 +65,7 @@ public class MeetingBoard {
 
     @Column(name ="meet_content", columnDefinition = "TEXT")
     private String meet_content;
+
+    @Column(name = "meet_nick_name")
+    private String meet_nick_name;
 }

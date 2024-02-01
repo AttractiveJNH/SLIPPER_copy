@@ -7,6 +7,8 @@
 >
 <head>
 
+    <link rel="stylesheet" href="/css/myPage.css" th:href="@{/css/myPage.css}">
+
 <!--    비밀번호 변경 팝업창 펑션-->
     <script type="text/javascript">
         window.onload = function(){
@@ -18,33 +20,34 @@
 </head>
 
 
-<div layout:fragment="content" id="myPageContent">
+<div layout:fragment="content" class="container">
 
 
     <div>
         <label for="utId">
             <h4>아이디</h4>
-            <!--                <p th:text="${userInfo.userId}"></p>-->
+            <p th:text="${userId}"></p>
+
         </label>
         <label for="utId">
             <h4>닉네임</h4>
-            <p></p>
+            <p th:text="${nickName}"></p>
         </label>
         <label for="utId">
             <h4>생일</h4>
-            <p></p>
+            <p th:text="${birthDate}"></p>
         </label>
         <label for="utId">
             <h4>이름</h4>
-            <p></p>
+            <p th:text="${name}"></p>
         </label>
         <label for="utId">
             <h4>지역</h4>
-            <p></p>
+            <p th:text="${location}"></p>
         </label>
         <label for="utId">
             <h4>연락처</h4>
-            <p></p>
+            <p th:text="${phone}"></p>
         </label>
 
         <button type="submit" value="변경하기">변경하기</button>

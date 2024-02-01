@@ -17,6 +17,7 @@ html{
 }
 /* 헤더 아래 회색부분 */
 .header_under {
+
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -37,10 +38,10 @@ html{
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-    background-color: rgb(80, 80, 80);
-    font-size: 30px;
-    color: white;
-    font-family: 'Noto Sans', sans-serif;
+  background-color: rgb(80, 80, 80);
+  font-size: 30px;
+  color: white;
+  font-family: 'Noto Sans', sans-serif;
 }
 /* a 링크 밑줄 삭제 */
 a {
@@ -57,7 +58,6 @@ a:hover {
 #icon {
   width: 30px;
   height: 30px;
-  background-color: aliceblue;
   background: url(/images/slipperIcon.png);
 }
 

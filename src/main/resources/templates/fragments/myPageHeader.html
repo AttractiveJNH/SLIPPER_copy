@@ -20,6 +20,14 @@
             th:href="@{/css/myPage.css}"
     />
 
+    <!--부트스트랩 스크립트-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+            crossorigin="anonymous"></script>
+
     <title>SLIPPER</title>
 
 
@@ -27,63 +35,41 @@
 
 <div th:fragment="header">
 
-    <div class="wrapper">
-        <div class="title">
-            <label for="logo">
-                <a href="/main"
-                   style="color: white"
-                ><img
-                        src="/images/slipperIcon.png"
-                        alt="홈페이지로고"
-                        width="30px"
-                        height="30px"
-                />
-                    SLIPPER
-                </a>
-            </label>
+    <div th:if="${id}">
+
+
+        <div class="wrapper">
+            <div class="title">
+                <label for="logo">
+                    <a href="/main"
+                       style="color: white"
+                    ><img
+                            src="/images/slipperIcon.png"
+                            alt="홈페이지로고"
+                            width="30px"
+                            height="30px"
+                    />
+                        SLIPPER
+                    </a>
+                </label>
+            </div>
+
+            <form method="get">
+                <label for="search">
+                    <div class="search">
+                        <input type="text"/>
+                        <button type="submit" value="Search"/>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </label>
+            </form>
+            <div class="log"><a href="/logOut" style="color: white">LogOut</a></div>
         </div>
-
-        <form method="get">
-            <label for="search">
-                <div class="search">
-                    <input type="text"/>
-                    <button type="submit" value="Search"/>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </label>
-        </form>
-        <div class="log"><a href="/login" style="color: white">Log In</a></div>
-    </div>
-    <div class="header_under">
-        <ul class="lists">
-            <li>
-                <a href="#">일반</a>
-            </li>
-            <li>
-                <a href="#">모임</a>
-            </li>
-            <li>
-                <a href="#">홍보</a>
-            </li>
-            <li>
-                <a href="#">리뷰</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="side_wrap">
-        <div class="side_header" style="color: #ffffff;">
-            <a>마이페이지</a>
-        </div>
-        <div class="side_middle">
-            <br>
-            <a href="#">내 정보</a>
-
-            <ul><span><a href="#">내가 쓴 글</a></span>
+        <div class="header_under">
+            <ul class="lists">
                 <li>
                     <a href="#">일반</a>
                 </li>
-
                 <li>
                     <a href="#">모임</a>
                 </li>
@@ -94,15 +80,40 @@
                     <a href="#">리뷰</a>
                 </li>
             </ul>
-            <div>
-                <a href="#">내 쪽지함</a>
+        </div>
+
+        <div class="side_wrap">
+            <div class="side_header" style="color: #ffffff;">
+                <a>마이페이지</a>
+            </div>
+            <div class="side_middle">
+                <br>
+                <a href="#">내 정보</a>
+
+                <ul><span><a href="/myPage/myArticleList">내가 쓴 글</a></span>
+                    <li>
+                        <a href="#">일반</a>
+                    </li>
+
+                    <li>
+                        <a href="#">모임</a>
+                    </li>
+                    <li>
+                        <a href="#">홍보</a>
+                    </li>
+                    <li>
+                        <a href="#">리뷰</a>
+                    </li>
+                </ul>
+                <div>
+                    <a href="#">내 쪽지함</a>
+                </div>
             </div>
         </div>
 
-
         <div class="side_footer_f">
             <label for="exit">
-            <a href="#">회원 탈퇴</a>
+                <a href="#">회원 탈퇴</a>
             </label>
         </div>
 

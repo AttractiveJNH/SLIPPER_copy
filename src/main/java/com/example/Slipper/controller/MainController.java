@@ -10,9 +10,7 @@ import com.example.Slipper.service.loginAndJoinServices.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,15 +24,26 @@ public class MainController {
 
     private final UserService userService;
 
-    private final UserRepository userRepository;
-
     private final EntreService entreService;
 
-    private final EntreRepository entreRepository;
+
 
 
     @GetMapping("/main")
-    public String mainPage() {
+    public String mainPage(Model model, @SessionAttribute(name = "id", required = false) String id) {
+
+        EntreEntity loginEntre = entreService.getLoginEntreByLoginId(id);
+        UserEntity loginUser = userService.getLoginUserById(id);
+
+        if (loginEntre != null || loginUser != null) {
+
+            model.addAttribute("id", true);
+
+        } else {
+
+            model.addAttribute("id", false);
+
+        }
 
 
         return "main";
@@ -49,15 +58,16 @@ public class MainController {
 
     // 로그인 성공 시 맵핑
     @PostMapping("/login_proc")
-    public String loginRequest(@ModelAttribute LoginRequest loginRequest, BindingResult bindingResult, HttpServletRequest httpServletRequest, Model model, @SessionAttribute(name = "id", required = false) String id) {
+    public String loginRequest(@ModelAttribute LoginRequest loginRequest, BindingResult bindingResult,
+                               HttpServletRequest httpServletRequest, Model model,
+                               @SessionAttribute(name = "id", required = false) String id) {
 
         model.addAttribute("loginType", "slipper");
 
         UserEntity user = userService.login(loginRequest);
         EntreEntity entre = entreService.login(loginRequest);
 
-        UserEntity requestUser = userRepository.getById(id);
-        EntreEntity requestEntre = entreRepository.getById(id);
+
         // 로그인 아이디나 비밀번호가 틀린 경우 global error return
         if (user == null && entre == null) {
             bindingResult.reject("loginFail", "로그인 아이디 또는 비밀번호가 틀렸습니다.");
@@ -73,11 +83,13 @@ public class MainController {
         HttpSession session = httpServletRequest.getSession(true);  // Session이 없으면 생성
         // 세션에 userId를 넣어줌
 
-        if (user != null && user == requestUser) {
+        if (user != null) {
             session.setAttribute("id", user.getId());
             session.setMaxInactiveInterval(1800); // Session이 30분동안 유지
 
-        } else if (entre != null && entre == requestEntre) {
+            log.info(user.getId());
+
+        } else if (entre != null) {
             session.setAttribute("id", entre.getId());
             session.setMaxInactiveInterval(1800); // Session이 30분동안 유지
 

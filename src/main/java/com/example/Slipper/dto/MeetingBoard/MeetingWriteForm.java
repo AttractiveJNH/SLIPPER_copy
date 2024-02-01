@@ -1,7 +1,7 @@
 package com.example.Slipper.dto.MeetingBoard;
 
 import com.example.Slipper.entity.MeetingBoardEntity.MeetingBoard;
-import com.example.Slipper.entity.SswTestEntity.Entrepreneur;
+import com.example.Slipper.entity.SswTestEntity.Entrepreneurs;
 import com.example.Slipper.entity.SswTestEntity.Users;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,6 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 
 @NoArgsConstructor
@@ -25,7 +24,7 @@ public class MeetingWriteForm {
 
     private LocalDateTime meet_write_date;
 
-    private int meet_max_particpants;
+    private int meet_max_participants;
 
 
     private LocalDate meet_apply_end_date;
@@ -38,43 +37,19 @@ public class MeetingWriteForm {
 
 
 
-
-    public MeetingBoard userMeetEntity(Users user_num){
+    //일반 유저 모임 게시판 글작성
+    public MeetingBoard userMeetEntity(Users user_num, String nick_name){
         return new MeetingBoard(null, user_num, null, meet_category, meet_title,
-                meet_write_date, 0, 1, meet_max_particpants,
-                meet_apply_end_date, meet_date, meet_field, meet_content);
+                meet_write_date, 0, 1, meet_max_participants,
+                meet_apply_end_date, meet_date, meet_field, meet_content, nick_name);
     }
 
-
-    public MeetingBoard entrepreneurMeetEntity(Entrepreneur entrepre_num){
+    //사업자 유저 모임 게시판 글작성
+    public MeetingBoard entrepreneurMeetEntity(Entrepreneurs entrepre_num, String nick_name){
         return new MeetingBoard(null, null, entrepre_num, meet_category, meet_title,
-                meet_write_date, 0, 1, meet_max_particpants,
-                meet_apply_end_date, meet_date, meet_field, meet_content);
+                meet_write_date, 0, 1, meet_max_participants,
+                meet_apply_end_date, meet_date, meet_field, meet_content, nick_name);
     }
 
 
-
-
-
-
-
-
-
-
-
-
-    //일반 유저 게시글 작성
-    public MeetingBoard usersEntity(Users user_num, String meet_content){
-        return new MeetingBoard(null, user_num, null, meet_category, meet_title,
-                meet_write_date, 0, 1, meet_max_particpants,
-                meet_apply_end_date, meet_date, meet_field, meet_content);
-    }
-
-
-    //사업자 유저 게시글 작성
-    public MeetingBoard entrepreneurEntity(Entrepreneur entrepre_num, String meet_content){
-        return new MeetingBoard(null, null, entrepre_num, meet_category, meet_title,
-                meet_write_date, 0, 1, meet_max_particpants,
-                meet_apply_end_date, meet_date, meet_field, meet_content);
-    }
 }

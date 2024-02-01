@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -31,7 +33,7 @@ public class Users {
     private String user_nick_name;
 
     @Column(name ="user_birthdate")
-    private String user_birthdate;
+    private LocalDate user_birthdate;
 
     @Column(name ="user_phone")
     private String user_phone;
