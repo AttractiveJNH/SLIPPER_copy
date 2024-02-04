@@ -47,6 +47,8 @@ dependencies {
 	//validation 어노테이션 dependency 추가
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+	implementation 'org.jsoup:jsoup:1.10.2'
+
 
 
 }
