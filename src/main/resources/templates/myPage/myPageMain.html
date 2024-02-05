@@ -9,8 +9,9 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="/css/myPage.css" th:href="@{/css/myPage.css}">
+    <!-- <link rel="stylesheet" href="/src/main/resources/static/css/myPage.css" > -->
 
-<!--    비밀번호 변경 팝업창 펑션-->
+    <!--    비밀번호 변경 팝업창 펑션-->
     <script type="text/javascript">
         window.onload = function(){
        document.getElementById("edit").onclick = function(){
@@ -19,19 +20,18 @@
    };
 
 
-
     </script>
-</head>
 
+<body>
 
-<div layout:fragment="content" class="container">
-
+<div layout:fragment="content" div class="container">
 
     <div>
         <label for="utId">
             <h4>아이디</h4>
+            <p>아이디</p>
             <p th:text="${userId}"></p>
-
+            
         </label>
         <label for="utId">
             <h4>닉네임</h4>
@@ -57,5 +57,6 @@
         <button type="submit" value="변경하기">변경하기</button>
         <button type="button" value="비밀번호 변경하기" id="edit">비밀번호 변경하기</button>
     </div>
-    </div>
+</div>
+</body>
 </html>

@@ -67,12 +67,11 @@ public class JoinService {
         entre.setEntrepreRegDay(entreDto.getEntrepreRegDay());
         entre.setEntrepreBusinessName(entreDto.getEntrepreBusinessName());
         entre.setEntrepreAddress(entreDto.getEntrepreAddress());
+        entre.setEntrepreBirthDate(entreDto.getEntrepreBirthDate());
         entre.setRole("ENTREPRENEUR");
 
         entreRepository.save(entre);
     }
 
-    
-    // 비밀번호 암호화 빈
 
 }

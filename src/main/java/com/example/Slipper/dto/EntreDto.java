@@ -57,7 +57,7 @@ public class EntreDto {
     private String role;
 
     @NotNull(message = "생일을 입력해주세요.")
-    private String entrepreBirthDate; //대표자 생일
+    private LocalDate entrepreBirthDate; //대표자 생일
     
     
 
