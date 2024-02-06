@@ -18,7 +18,7 @@ html{
 /* 헤더 아래 회색부분 */
 .header_under {
 
-  margin: 0 auto;
+
   display: flex;
   justify-content: center;
   background-color: rgb(249, 248, 252);
@@ -176,7 +176,7 @@ a:hover {
 /* 강의실 */
 .side_header {
 
-    position: absolute;
+    position: static;
     width: 200px;
     height: 80px;
     background-color: rgb(80, 80, 80);

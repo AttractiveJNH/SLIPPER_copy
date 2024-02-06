@@ -96,17 +96,8 @@ public class MyPageController {
 
         return "myPage/myArticleList";
 
-//    } else
-//
-//    {
-//
-//
-//        return "redirect:/login";
-//
-//
-//    }
-
-
     }
+
+
 }
 
