@@ -4,11 +4,8 @@
 //import lombok.AllArgsConstructor;
 //import lombok.Data;
 //import lombok.NoArgsConstructor;
-//import org.apache.catalina.User;
 //import org.hibernate.annotations.OnDelete;
 //import org.hibernate.annotations.OnDeleteAction;
-//
-//import javax.xml.transform.sax.SAXTransformerFactory;
 //
 //@Entity
 //@Table(name= "message")
@@ -58,4 +55,3 @@
 //    }
 //}
 //
-//}

@@ -79,7 +79,7 @@ public class MyPageController {
 
     }
 
-    @GetMapping("/myArticleList")
+    @GetMapping("/noteList")
     public String myArticleListP(Model model, @SessionAttribute(name = "id", required = false) String id) {
 
         EntreEntity loginEntre = entreService.getLoginEntreByLoginId(id);
@@ -91,13 +91,16 @@ public class MyPageController {
 
             model.addAttribute("id", true);
 
+            return "myPage/noteList";
+        } else {
+
+
+            return "redirect:/login";
+
 
         }
 
-        return "myPage/myArticleList";
 
     }
 
-
 }
-
