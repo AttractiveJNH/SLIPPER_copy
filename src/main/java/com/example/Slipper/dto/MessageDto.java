@@ -10,6 +10,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Getter @Setter
 public class MessageDto {
 
+    private Long id;
+
     private String title;
 
     private String content;
@@ -18,13 +20,5 @@ public class MessageDto {
 
     private String receiver;
 
-    public static MessageDto toDto(Message message){
 
-        return new MessageDto(
-                message.getTitle(),
-                message.getContent(),
-                message.getSender(),
-                message.getReceiver()
-        );
-    }
 }
