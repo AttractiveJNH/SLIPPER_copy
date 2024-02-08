@@ -1,5 +1,6 @@
 package com.example.Slipper.entity.SswTestEntity;
 
+import com.example.Slipper.entity.userAndEntreEntities.EntreEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,5 +41,6 @@ public class Users {
 
     @Column(name ="user_location")
     private String user_location;
+
 
 }

@@ -1,5 +1,6 @@
 package com.example.Slipper.entity.userAndEntreEntities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,6 +43,7 @@ public class EntreEntity {
     private String id; //대표자 아이디
 
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY) // Json 결과로 출력하지 않을 데이터
     @Column(name="entrepre_password",unique = true)
     private String password; //대표자 비밀번호
 
@@ -58,5 +60,11 @@ public class EntreEntity {
 
     @Column(name = "entrepre_birth_date", columnDefinition = "DATE")
     private LocalDate entrepreBirthDate; //대표자 생일
+
+
+    @JoinColumn(name = "user_num")
+    @OneToOne
+    private UserEntity user;
+
 
 }

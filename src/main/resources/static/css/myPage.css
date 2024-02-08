@@ -90,7 +90,7 @@
     margin: 20px 0px;
 }
 
-/* 여기서부터는 내가 쓴 글 CSS*/
+/* 여기서부터는 쪽지함 CSS*/
 
 .noteWrapper{
     position: relative;
@@ -109,6 +109,33 @@
     margin-bottom: 100px;
     text-align: center;
 }
+
+.noteWrapper > input[id="receive"]{
+    color: #fff;
+    font-size: 16px;
+    background-color: rgb(67,211,118);
+    margin-top: 100px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    }
+
+.noteWrapper > input[id="send"]{
+    color: #fff;
+    font-size: 16px;
+    background-color: rgb(67,211,118);
+    margin-top: 100px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+
+
 .hr1 {
     border: 0;
     height: 2px;

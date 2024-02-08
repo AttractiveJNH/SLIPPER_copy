@@ -47,7 +47,12 @@ dependencies {
 	//validation 어노테이션 dependency 추가
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+	// 스마트에디터
 	implementation 'org.jsoup:jsoup:1.10.2'
+
+	// 웹소켓
+
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 
 
 

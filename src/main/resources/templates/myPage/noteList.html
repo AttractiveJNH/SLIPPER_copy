@@ -19,65 +19,66 @@
 
             <hr class="hr2" noshade>
 
+            <input type="button" value="받은쪽지" id="receive">
+            <input type="button" value="보낸쪽지" id="send">
 
-            <span> ▷ 총 3개의 게시물이 있습니다. </span>
 
             <br>
-            <table class="noteTable">
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>글쓴이</th>
-                    <th>일시</th>
 
+            <table class="noteTable">
+
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>보낸사람</th>
+                    <th>내용</th>
+                    <th>날짜</th>
                 </tr>
 
                 <hr class="hr1" noshade>
+
                 <tr>
-
-                    <td class="center">1</td>
-                    <td class="left">게시글 1 입니다.</td>
-                    <td class="center">김준석</td>
+                    <th><input type="checkbox"></th>
+                    <td class="center">보낸사람</td>
+                    <td class="left">받은쪽지 제목</td>
                     <td class="center">2022-05-18</td>
-
                 </tr>
-                <tr>
-                    <td class="center">2</td>
-                    <td class="left">게시글 2 입니다.</td>
-                    <td class="center">김준석</td>
-                    <td class="center">2022-05-18</td>
 
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <td class="center">보낸사람</td>
+                    <td class="left">받은쪽지 제목</td>
+                    <td class="center">2022-05-18</td>
                 </tr>
-                <tr>
-                    <td class="center">3</td>
-                    <td class="left">게시글 3 입니다.</td>
-                    <td class="center">김준석</td>
-                    <td class="center">2022-05-18</td>
 
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <td class="center">보낸사람</td>
+                    <td class="left">받은쪽지 제목</td>
+                    <td class="center">2022-05-18</td>
                 </tr>
             </table>
             </br>
 
-<!--            페이징 코드-->
+            <!--            페이징 코드-->
 
-<!--            <div class="paging_box">-->
-<!--                <ul class="pagination" th:with="start=${T(java.lang.Math).floor(boardList.number/10)*10 + 1},-->
-<!--                        last=(${start + 9 < boardList.totalPages ? start + 9 : boardList.totalPages})">-->
-<!--                    <li><a th:href="@{/meeting/main(page=1)}"><<</a></li>-->
-<!--                    <li th:class="${boardList.first} ? 'disabled'">-->
-<!--                        <a th:href="${boardList.first} ? '#' :@{/meeting/main(page=${boardList.number})}"><</a>-->
-<!--                    </li>-->
+            <!--            <div class="paging_box">-->
+            <!--                <ul class="pagination" th:with="start=${T(java.lang.Math).floor(boardList.number/10)*10 + 1},-->
+            <!--                        last=(${start + 9 < boardList.totalPages ? start + 9 : boardList.totalPages})">-->
+            <!--                    <li><a th:href="@{/meeting/main(page=1)}"><<</a></li>-->
+            <!--                    <li th:class="${boardList.first} ? 'disabled'">-->
+            <!--                        <a th:href="${boardList.first} ? '#' :@{/meeting/main(page=${boardList.number})}"><</a>-->
+            <!--                    </li>-->
 
-<!--                    <li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == boardList.number + 1} ? 'active'">-->
-<!--                        <a th:text="${page}" th:href="@{/meeting/main(page=${page})}"></a>-->
-<!--                    </li>-->
+            <!--                    <li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == boardList.number + 1} ? 'active'">-->
+            <!--                        <a th:text="${page}" th:href="@{/meeting/main(page=${page})}"></a>-->
+            <!--                    </li>-->
 
-<!--                    <li th:class="${boardList.last} ? 'disabled'">-->
-<!--                        <a th:href="${boardList.last} ? '#' : @{/meeting/main(page=${boardList.number + 2})}">></a>-->
-<!--                    </li>-->
-<!--                    <li><a th:href="@{/meeting/main(page=${boardList.totalPages})}">>></a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
+            <!--                    <li th:class="${boardList.last} ? 'disabled'">-->
+            <!--                        <a th:href="${boardList.last} ? '#' : @{/meeting/main(page=${boardList.number + 2})}">></a>-->
+            <!--                    </li>-->
+            <!--                    <li><a th:href="@{/meeting/main(page=${boardList.totalPages})}">>></a></li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
 
             <span class="right">
 
